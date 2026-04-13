@@ -15,13 +15,13 @@ services:
       - dokploy-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cgx-site.rule=Host(`cgx.com.br`) || Host(`www.cgx.com.br`)"
+      - "traefik.http.routers.cgx-site.rule=Host(`cgxperts.org`) || Host(`www.cgxperts.org`)"
       - "traefik.http.routers.cgx-site.entrypoints=websecure"
       - "traefik.http.routers.cgx-site.tls.certresolver=letsencrypt"
       - "traefik.http.services.cgx-site.loadbalancer.server.port=3000"
-      # Redirect www -> non-www
-      - "traefik.http.middlewares.cgx-www-redirect.redirectregex.regex=^https://www\\.cgx\\.com\\.br/(.*)"
-      - "traefik.http.middlewares.cgx-www-redirect.redirectregex.replacement=https://cgx.com.br/$${1}"
+      # Redirect non-www -> www
+      - "traefik.http.middlewares.cgx-www-redirect.redirectregex.regex=^https://cgxperts\\.org/(.*)"
+      - "traefik.http.middlewares.cgx-www-redirect.redirectregex.replacement=https://www.cgxperts.org/$${1}"
       - "traefik.http.middlewares.cgx-www-redirect.redirectregex.permanent=true"
       - "traefik.http.routers.cgx-site.middlewares=cgx-www-redirect"
 
