@@ -42,13 +42,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <div className="relative">
+            <div className="bg-white rounded-xl px-3 py-1.5 shadow-sm group-hover:shadow-[0_0_16px_rgba(6,182,212,0.5)] transition-all duration-300">
               <Image
                 src="/logo.png"
                 alt="CGX — Sua infraestrutura, sob controle"
-                width={140}
-                height={56}
-                className="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.4)] group-hover:drop-shadow-[0_0_14px_rgba(6,182,212,0.7)] transition-all duration-300"
+                width={130}
+                height={44}
+                className="h-8 w-auto object-contain"
                 priority
               />
             </div>

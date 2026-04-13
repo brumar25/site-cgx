@@ -11,13 +11,15 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center mb-5 group w-fit">
-              <Image
-                src="/logo.png"
-                alt="CGX"
-                width={130}
-                height={52}
-                className="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 drop-shadow-[0_0_6px_rgba(6,182,212,0.3)] group-hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.6)] transition-all duration-300"
-              />
+              <div className="bg-white/90 group-hover:bg-white rounded-xl px-3 py-1.5 group-hover:shadow-[0_0_16px_rgba(6,182,212,0.4)] transition-all duration-300">
+                <Image
+                  src="/logo.png"
+                  alt="CGX"
+                  width={120}
+                  height={40}
+                  className="h-7 w-auto object-contain"
+                />
+              </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">
               Infraestrutura, automação e inteligência para empresas que querem operar melhor e crescer com segurança.
