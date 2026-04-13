@@ -7,31 +7,24 @@ services:
       dockerfile: Dockerfile
     container_name: cgx-site
     restart: unless-stopped
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     environment:
       - NODE_ENV=production
     networks:
-      - cgx-network
-
-  # Nginx reverse proxy (opcional — recomendado para SSL + domínio)
-  nginx:
-    image: nginx:alpine
-    container_name: cgx-nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./nginx/certs:/etc/nginx/certs:ro
-    depends_on:
-      - cgx-site
-    networks:
-      - cgx-network
-    profiles:
-      - with-nginx
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cgx-site.rule=Host(`cgx.com.br`) || Host(`www.cgx.com.br`)"
+      - "traefik.http.routers.cgx-site.entrypoints=websecure"
+      - "traefik.http.routers.cgx-site.tls.certresolver=letsencrypt"
+      - "traefik.http.services.cgx-site.loadbalancer.server.port=3000"
+      # Redirect www -> non-www
+      - "traefik.http.middlewares.cgx-www-redirect.redirectregex.regex=^https://www\\.cgx\\.com\\.br/(.*)"
+      - "traefik.http.middlewares.cgx-www-redirect.redirectregex.replacement=https://cgx.com.br/$${1}"
+      - "traefik.http.middlewares.cgx-www-redirect.redirectregex.permanent=true"
+      - "traefik.http.routers.cgx-site.middlewares=cgx-www-redirect"
 
 networks:
-  cgx-network:
-    driver: bridge
+  dokploy-network:
+    external: true
