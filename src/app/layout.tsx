@@ -38,17 +38,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://cgx.com.br',
+    url: 'https://www.cgxperts.org',
     title: 'CGX — Tecnologia para organizar, automatizar e acelerar seu negócio',
     description:
       'Soluções em infraestrutura, automação, integração de sistemas, BI e IA para empresas que querem crescer.',
     siteName: 'CGX',
+    images: [{ url: '/logo-dark.png', width: 600, height: 338, alt: 'CGX' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'CGX — Tecnologia aplicada ao crescimento de negócios',
     description:
       'Infraestrutura, automação e inteligência para o seu negócio.',
+    images: ['/logo-dark.png'],
   },
   robots: {
     index: true,

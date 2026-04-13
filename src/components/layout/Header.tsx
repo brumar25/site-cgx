@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -40,17 +41,17 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center group">
             <div className="relative">
-              <div className="w-8 h-8 rounded bg-gradient-to-br from-[#06B6D4] to-[#2563EB] flex items-center justify-center">
-                <span className="font-display font-800 text-white text-xs tracking-wider">CGX</span>
-              </div>
-              <div className="absolute inset-0 rounded bg-gradient-to-br from-[#06B6D4] to-[#2563EB] opacity-0 group-hover:opacity-40 blur-md transition-opacity duration-300" />
+              <Image
+                src="/logo.png"
+                alt="CGX — Sua infraestrutura, sob controle"
+                width={140}
+                height={56}
+                className="h-10 w-auto object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.4)] group-hover:drop-shadow-[0_0_14px_rgba(6,182,212,0.7)] transition-all duration-300"
+                priority
+              />
             </div>
-            <span className="font-display font-bold text-xl text-white tracking-tight">
-              CGX
-              <span className="text-[#06B6D4]">.</span>
-            </span>
           </Link>
 
           {/* Desktop nav */}

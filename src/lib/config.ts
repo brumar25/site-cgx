@@ -4,10 +4,10 @@ export const SITE_CONFIG = {
   description:
     'A CGX desenvolve soluções em infraestrutura, automação, integração de sistemas, BI e inteligência artificial para empresas que querem mais controle, produtividade e crescimento.',
   whatsapp: {
-    number: '5511999999999', // Substitua pelo número real
+    number: '5567992017855', // Substitua pelo número real
     message: 'Olá! Gostaria de saber mais sobre as soluções da CGX.',
   },
-  email: 'contato@cgx.com.br',
+  email: 'contato@cgxperts.org',
   social: {
     linkedin: 'https://linkedin.com/company/cgx',
   },

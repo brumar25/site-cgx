@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Linkedin, Mail, MessageCircle, ArrowUpRight } from 'lucide-react'
 import { SITE_CONFIG, WHATSAPP_URL } from '@/lib/config'
 
@@ -9,13 +10,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4 group w-fit">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#06B6D4] to-[#2563EB] flex items-center justify-center">
-                <span className="font-display font-bold text-white text-xs tracking-wider">CGX</span>
-              </div>
-              <span className="font-display font-bold text-xl text-white tracking-tight">
-                CGX<span className="text-[#06B6D4]">.</span>
-              </span>
+            <Link href="/" className="flex items-center mb-5 group w-fit">
+              <Image
+                src="/logo.png"
+                alt="CGX"
+                width={130}
+                height={52}
+                className="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 drop-shadow-[0_0_6px_rgba(6,182,212,0.3)] group-hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.6)] transition-all duration-300"
+              />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">
               Infraestrutura, automação e inteligência para empresas que querem operar melhor e crescer com segurança.
