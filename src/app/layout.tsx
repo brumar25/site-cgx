@@ -1,21 +1,14 @@
 import type { Metadata } from 'next'
-import { Poppins, Mulish } from 'next/font/google'
+import { Raleway } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
 
-const poppins = Poppins({
+const raleway = Raleway({
   subsets: ['latin'],
-  variable: '--font-poppins',
+  variable: '--font-raleway',
   weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-})
-
-const mulish = Mulish({
-  subsets: ['latin'],
-  variable: '--font-mulish',
-  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 })
 
@@ -64,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className={`${poppins.variable} ${mulish.variable}`}>
+    <html lang="pt-BR" className={raleway.variable}>
       <body>
         <Header />
         <main>{children}</main>

@@ -28,8 +28,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ['var(--font-poppins)', 'sans-serif'],
-        body: ['var(--font-mulish)', 'sans-serif'],
+        display: ['var(--font-raleway)', 'sans-serif'],
+        body: ['var(--font-raleway)', 'sans-serif'],
       },
       animation: {
         float: 'float 6s ease-in-out infinite',

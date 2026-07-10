@@ -12,7 +12,7 @@ Seções: Hero &rarr; Sobre &rarr; Como funciona &rarr; Serviços &rarr; Resulta
 - **Estilização:** Tailwind CSS 3
 - **Animações:** Framer Motion
 - **Ícones:** Lucide React
-- **Tipografia:** Poppins + Mulish (Google Fonts)
+- **Tipografia:** Raleway (Google Fonts) — mesma família do template
 - **Deploy:** Docker + Nginx
 
 ---
@@ -197,6 +197,20 @@ crontab -e
 | `src/components/sections/About.tsx` | Sobre a empresa |
 | `src/app/layout.tsx` | Título e descrição SEO |
 | `src/app/globals.css` | Cores e estilos globais |
+
+---
+
+## Imagens
+
+Fotos de banco aberto (Unsplash — licença livre para uso comercial, sem atribuição obrigatória), em `public/images/`:
+
+| Arquivo | Foto |
+|---|---|
+| `hero-bg.jpg` | Server room — unsplash.com/photos/ef010cbdcc31 (Taylor Vick) |
+| `dashboard.jpg` | Dashboard analytics — unsplash.com/photos/bebda4e38f71 (Luke Chesser) |
+| `equipe.jpg` | Equipe trabalhando — unsplash.com/photos/009f0129c71c (Annie Spratt) |
+| `whatsapp.jpg` | Celular em uso — unsplash.com/photos/f56000c27a9a |
+| `bi-dados.jpg` | Notebook com indicadores — unsplash.com/photos/afdab827c52f (Carlos Muza) |
 
 ---
 

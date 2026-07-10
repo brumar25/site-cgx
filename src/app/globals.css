@@ -26,7 +26,7 @@ html {
 body {
   background-color: #ffffff;
   color: var(--text-dark);
-  font-family: var(--font-mulish), sans-serif;
+  font-family: var(--font-raleway), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -51,18 +51,10 @@ section[id] {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--cgx-cyan);
+  background: var(--cgx-blue);
 }
 
-/* Texto com gradiente da marca */
-.gradient-text {
-  background: linear-gradient(120deg, #22d3ee, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Botão pílula principal (CTA do template) */
+/* Botão pílula principal (CTA do template) — cor sólida */
 .btn-pill {
   display: inline-flex;
   align-items: center;
@@ -70,18 +62,16 @@ section[id] {
   gap: 0.6rem;
   padding: 1rem 2.4rem;
   border-radius: 999px;
-  font-family: var(--font-poppins), sans-serif;
   font-weight: 600;
   font-size: 1rem;
   color: #ffffff;
-  background: linear-gradient(120deg, #06b6d4, #2563eb);
-  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.35);
-  transition: all 0.3s ease;
+  background: #2563eb;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
 .btn-pill:hover {
+  background: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(37, 99, 235, 0.45);
 }
 
 .btn-pill-outline {
@@ -91,12 +81,11 @@ section[id] {
   gap: 0.6rem;
   padding: 1rem 2.4rem;
   border-radius: 999px;
-  font-family: var(--font-poppins), sans-serif;
   font-weight: 600;
   font-size: 1rem;
   color: #ffffff;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  transition: border-color 0.25s ease, color 0.25s ease;
 }
 
 .btn-pill-outline:hover {
@@ -104,29 +93,10 @@ section[id] {
   color: #22d3ee;
 }
 
-/* Bokeh do hero (fundo "foto desfocada" do template, feito em CSS) */
-.hero-bokeh {
-  background:
-    radial-gradient(ellipse 45% 55% at 18% 30%, rgba(6, 182, 212, 0.16) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 85% 25%, rgba(37, 99, 235, 0.22) 0%, transparent 70%),
-    radial-gradient(ellipse 55% 45% at 60% 85%, rgba(20, 28, 86, 0.9) 0%, transparent 75%),
-    radial-gradient(circle 180px at 75% 65%, rgba(6, 182, 212, 0.10) 0%, transparent 100%),
-    radial-gradient(circle 140px at 25% 75%, rgba(59, 130, 246, 0.12) 0%, transparent 100%),
-    linear-gradient(160deg, #0b1240 0%, #0a1038 45%, #060a26 100%);
-}
-
 /* Glifos decorativos (+, ×, ○ do template) */
 .glyph {
-  font-family: var(--font-poppins), sans-serif;
   font-weight: 700;
   line-height: 1;
   user-select: none;
   pointer-events: none;
-}
-
-/* Donut de gráfico do mockup */
-.donut {
-  border-radius: 999px;
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
-  mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
 }

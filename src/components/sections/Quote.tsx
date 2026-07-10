@@ -34,7 +34,7 @@ export default function Quote() {
                 key={stat.value}
                 className="rounded-2xl bg-white/5 border border-white/10 px-6 py-6"
               >
-                <p className="font-display font-bold text-2xl gradient-text mb-2">{stat.value}</p>
+                <p className="font-display font-bold text-2xl text-[#22D3EE] mb-2">{stat.value}</p>
                 <p className="text-slate-400 text-sm leading-snug">{stat.label}</p>
               </div>
             ))}

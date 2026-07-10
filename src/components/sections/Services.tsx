@@ -76,8 +76,8 @@ export default function Services() {
             return (
               <AnimatedSection key={service.title} delay={0.08 * (i % 3)}>
                 <div className="group h-full rounded-2xl border border-[#E3EAF8] bg-white p-7 shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
-                  <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#06B6D4]/10 to-[#2563EB]/10 border border-[#2563EB]/15 flex items-center justify-center mb-5">
-                    <Icon size={22} className="text-[#2563EB] group-hover:text-[#06B6D4] transition-colors" />
+                  <span className="w-12 h-12 rounded-2xl bg-[#F0F4FC] border border-[#E3EAF8] flex items-center justify-center mb-5">
+                    <Icon size={22} className="text-[#2563EB]" />
                   </span>
                   <h3 className="font-display font-semibold text-lg text-[#1C2350] mb-2.5">
                     {service.title}
