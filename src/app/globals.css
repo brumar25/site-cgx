@@ -3,15 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --color-navy-950: #020617;
-  --color-navy-900: #0F172A;
-  --color-navy-800: #1E293B;
-  --color-navy-700: #334155;
-  --color-cgx-blue: #2563EB;
-  --color-cgx-cyan: #06B6D4;
-  --color-cgx-green: #22C55E;
-  --color-text: #F8FAFC;
-  --color-muted: #94A3B8;
+  --ink-950: #060a26;
+  --ink-900: #0b1240;
+  --ink-800: #141c56;
+  --cgx-cyan: #06b6d4;
+  --cgx-blue: #2563eb;
+  --cloud-100: #f0f4fc;
+  --text-dark: #1c2350;
+  --text-muted: #5b6482;
 }
 
 * {
@@ -25,131 +24,109 @@ html {
 }
 
 body {
-  background-color: var(--color-navy-900);
-  color: var(--color-text);
-  font-family: var(--font-dm-sans), sans-serif;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  font-family: var(--font-mulish), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
+/* Compensa o header fixo ao navegar por âncoras */
+section[id] {
+  scroll-margin-top: 88px;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-navy-950);
+  background: var(--cloud-100);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-navy-700);
+  background: #b9c3e0;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-cgx-cyan);
+  background: var(--cgx-cyan);
 }
 
-/* Dot grid background utility */
-.bg-dot-pattern {
-  background-image: radial-gradient(circle, #334155 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
-/* Glow text utility */
-.text-glow-cyan {
-  text-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
-}
-
-.text-glow-blue {
-  text-shadow: 0 0 20px rgba(37, 99, 235, 0.6);
-}
-
-/* Gradient border card */
-.card-gradient-border {
-  position: relative;
-  background: var(--color-navy-800);
-  border-radius: 12px;
-}
-
-.card-gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(37, 99, 235, 0.1), transparent);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  transition: background 0.3s ease;
-}
-
-.card-gradient-border:hover::before {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.7), rgba(37, 99, 235, 0.4), rgba(6, 182, 212, 0.2));
-}
-
-/* Horizontal rule with glow */
-.rule-glow {
-  border: none;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.4), transparent);
-}
-
-/* Section spacing */
-.section-py {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-@media (max-width: 768px) {
-  .section-py {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-/* Noise overlay for depth */
-.noise-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-/* Gradient text */
+/* Texto com gradiente da marca */
 .gradient-text {
-  background: linear-gradient(135deg, #06B6D4, #2563EB);
+  background: linear-gradient(120deg, #22d3ee, #3b82f6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.gradient-text-warm {
-  background: linear-gradient(135deg, #06B6D4, #2563EB, #06B6D4);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 4s ease infinite;
+/* Botão pílula principal (CTA do template) */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2.4rem;
+  border-radius: 999px;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff;
+  background: linear-gradient(120deg, #06b6d4, #2563eb);
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.35);
+  transition: all 0.3s ease;
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.btn-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(37, 99, 235, 0.45);
 }
 
-/* Pulse ring */
-@keyframes pulse-ring {
-  0% { transform: scale(0.8); opacity: 0.8; }
-  100% { transform: scale(2.4); opacity: 0; }
+.btn-pill-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2.4rem;
+  border-radius: 999px;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  transition: all 0.3s ease;
 }
 
-.animate-pulse-ring {
-  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.btn-pill-outline:hover {
+  border-color: #22d3ee;
+  color: #22d3ee;
+}
+
+/* Bokeh do hero (fundo "foto desfocada" do template, feito em CSS) */
+.hero-bokeh {
+  background:
+    radial-gradient(ellipse 45% 55% at 18% 30%, rgba(6, 182, 212, 0.16) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 85% 25%, rgba(37, 99, 235, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 45% at 60% 85%, rgba(20, 28, 86, 0.9) 0%, transparent 75%),
+    radial-gradient(circle 180px at 75% 65%, rgba(6, 182, 212, 0.10) 0%, transparent 100%),
+    radial-gradient(circle 140px at 25% 75%, rgba(59, 130, 246, 0.12) 0%, transparent 100%),
+    linear-gradient(160deg, #0b1240 0%, #0a1038 45%, #060a26 100%);
+}
+
+/* Glifos decorativos (+, ×, ○ do template) */
+.glyph {
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Donut de gráfico do mockup */
+.donut {
+  border-radius: 999px;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 12px), #000 calc(100% - 11px));
 }

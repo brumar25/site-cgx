@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface AnimatedSectionProps {
   children: React.ReactNode
@@ -16,9 +15,6 @@ export default function AnimatedSection({
   delay = 0,
   direction = 'up',
 }: AnimatedSectionProps) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
   const directionMap = {
     up: { y: 32, x: 0 },
     down: { y: -32, x: 0 },
@@ -27,14 +23,11 @@ export default function AnimatedSection({
     none: { y: 0, x: 0 },
   }
 
-  const initial = { opacity: 0, ...directionMap[direction] }
-  const animate = inView ? { opacity: 1, y: 0, x: 0 } : initial
-
   return (
     <motion.div
-      ref={ref}
-      initial={initial}
-      animate={animate}
+      initial={{ opacity: 0, ...directionMap[direction] }}
+      whileInView={{ opacity: 1, y: 0, x: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={className}
     >

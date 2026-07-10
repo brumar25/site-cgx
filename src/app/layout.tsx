@@ -1,28 +1,29 @@
 import type { Metadata } from 'next'
-import { Sora, DM_Sans } from 'next/font/google'
+import { Poppins, Mulish } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
 
-const sora = Sora({
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-sora',
-  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
+const mulish = Mulish({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-mulish',
   weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'CGX — Infraestrutura, automação e inteligência para o seu negócio',
+  metadataBase: new URL('https://www.cgxperts.org'),
+  title: 'CGX — A forma mais inteligente de operar o seu negócio',
   description:
-    'A CGX desenvolve soluções em infraestrutura, automação, integração de sistemas, BI e inteligência artificial para empresas que querem mais controle, produtividade e crescimento.',
+    'A CGX desenvolve automações, integrações, BI e inteligência artificial para empresas que querem crescer sem aumentar a complexidade operacional.',
   keywords: [
     'automação de processos',
     'inteligência artificial',
@@ -39,17 +40,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     url: 'https://www.cgxperts.org',
-    title: 'CGX — Tecnologia para organizar, automatizar e acelerar seu negócio',
+    title: 'CGX — A forma mais inteligente de operar o seu negócio',
     description:
-      'Soluções em infraestrutura, automação, integração de sistemas, BI e IA para empresas que querem crescer.',
+      'Automações, integrações, BI e IA sob medida para empresas que querem mais controle, produtividade e crescimento.',
     siteName: 'CGX',
     images: [{ url: '/logo-dark.png', width: 600, height: 338, alt: 'CGX' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CGX — Tecnologia aplicada ao crescimento de negócios',
-    description:
-      'Infraestrutura, automação e inteligência para o seu negócio.',
+    title: 'CGX — A forma mais inteligente de operar o seu negócio',
+    description: 'Automações, integrações, BI e IA sob medida para o seu negócio.',
     images: ['/logo-dark.png'],
   },
   robots: {
@@ -64,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className={`${sora.variable} ${dmSans.variable}`}>
+    <html lang="pt-BR" className={`${poppins.variable} ${mulish.variable}`}>
       <body>
         <Header />
         <main>{children}</main>

@@ -1,6 +1,8 @@
 # CGX — Site Institucional
 
-Site institucional da marca CGX, desenvolvido com Next.js 14, Tailwind CSS e Framer Motion.
+Site institucional da marca CGX — one-page no estilo do template Analitix (Wix), desenvolvido com Next.js 14, Tailwind CSS e Framer Motion.
+
+Seções: Hero &rarr; Sobre &rarr; Como funciona &rarr; Serviços &rarr; Resultados &rarr; Solicite um diagnóstico. As rotas antigas (`/sobre`, `/servicos`, `/contato`) redirecionam para as âncoras correspondentes.
 
 ---
 
@@ -10,7 +12,7 @@ Site institucional da marca CGX, desenvolvido com Next.js 14, Tailwind CSS e Fra
 - **Estilização:** Tailwind CSS 3
 - **Animações:** Framer Motion
 - **Ícones:** Lucide React
-- **Tipografia:** Sora + DM Sans (Google Fonts)
+- **Tipografia:** Poppins + Mulish (Google Fonts)
 - **Deploy:** Docker + Nginx
 
 ---
@@ -23,24 +25,25 @@ cgx-site/
 │   ├── app/
 │   │   ├── layout.tsx          # Layout raiz (fontes, metadata, header/footer)
 │   │   ├── globals.css         # Estilos globais e variáveis CSS
-│   │   ├── page.tsx            # Home
-│   │   ├── servicos/page.tsx   # Página de serviços
-│   │   ├── sobre/page.tsx      # Página sobre
-│   │   └── contato/page.tsx    # Página de contato
+│   │   ├── page.tsx            # One-page (todas as seções)
+│   │   ├── servicos/page.tsx   # Redirect → /#servicos
+│   │   ├── sobre/page.tsx      # Redirect → /#sobre
+│   │   └── contato/page.tsx    # Redirect → /#contato
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── Header.tsx
 │   │   │   ├── Footer.tsx
 │   │   │   └── WhatsAppButton.tsx
 │   │   ├── sections/
-│   │   │   ├── Hero.tsx
-│   │   │   ├── ValueProp.tsx
-│   │   │   ├── Pillars.tsx
-│   │   │   ├── Services.tsx
-│   │   │   ├── HowItWorks.tsx
-│   │   │   └── CTASection.tsx
+│   │   │   ├── Hero.tsx        # Hero navy + mockup de dashboard
+│   │   │   ├── About.tsx       # História / Visão / Tecnologia
+│   │   │   ├── Features.tsx    # Como funciona + metodologia
+│   │   │   ├── Services.tsx    # Grid de serviços
+│   │   │   ├── Quote.tsx       # Resultados reais
+│   │   │   └── Contact.tsx     # Formulário → WhatsApp
 │   │   └── ui/
-│   │       └── AnimatedSection.tsx
+│   │       ├── AnimatedSection.tsx
+│   │       └── DotNav.tsx      # Navegação lateral por pontos
 │   └── lib/
 │       └── config.ts           # ← Configure WhatsApp e e-mail aqui
 ├── nginx/
@@ -190,8 +193,8 @@ crontab -e
 |---|---|
 | `src/lib/config.ts` | WhatsApp, e-mail, redes sociais |
 | `src/components/sections/Hero.tsx` | Título e subtítulo principal |
-| `src/app/servicos/page.tsx` | Detalhamento dos serviços |
-| `src/app/sobre/page.tsx` | Sobre a empresa |
+| `src/components/sections/Services.tsx` | Serviços |
+| `src/components/sections/About.tsx` | Sobre a empresa |
 | `src/app/layout.tsx` | Título e descrição SEO |
 | `src/app/globals.css` | Cores e estilos globais |
 

@@ -1,19 +1,21 @@
 import Hero from '@/components/sections/Hero'
-import ValueProp from '@/components/sections/ValueProp'
-import Pillars from '@/components/sections/Pillars'
+import About from '@/components/sections/About'
+import Features from '@/components/sections/Features'
 import Services from '@/components/sections/Services'
-import HowItWorks from '@/components/sections/HowItWorks'
-import CTASection from '@/components/sections/CTASection'
+import Quote from '@/components/sections/Quote'
+import Contact from '@/components/sections/Contact'
+import DotNav from '@/components/ui/DotNav'
 
 export default function Home() {
   return (
     <>
+      <DotNav />
       <Hero />
-      <ValueProp />
-      <Pillars />
+      <About />
+      <Features />
       <Services />
-      <HowItWorks />
-      <CTASection />
+      <Quote />
+      <Contact />
     </>
   )
 }

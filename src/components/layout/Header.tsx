@@ -3,89 +3,84 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { WHATSAPP_URL } from '@/lib/config'
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/servicos', label: 'Serviços' },
-  { href: '/sobre', label: 'Sobre' },
-  { href: '/contato', label: 'Contato' },
+  { href: '#home', label: 'Home' },
+  { href: '#sobre', label: 'Sobre' },
+  { href: '#como-funciona', label: 'Como funciona' },
+  { href: '#servicos', label: 'Serviços' },
 ]
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [active, setActive] = useState('#home')
 
+  // Scroll-spy simples: marca o link da seção visível
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const ids = ['home', 'sobre', 'como-funciona', 'servicos', 'contato']
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    )
+    ids.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#0F172A]/95 backdrop-blur-md border-b border-white/5 shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="bg-white rounded-xl px-3 py-1.5 shadow-sm group-hover:shadow-[0_0_16px_rgba(6,182,212,0.5)] transition-all duration-300">
-              <Image
-                src="/logo.png"
-                alt="CGX — Sua infraestrutura, sob controle"
-                width={130}
-                height={44}
-                className="h-8 w-auto object-contain"
-                priority
-              />
-            </div>
-          </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 shadow-[0_2px_20px_rgba(6,10,38,0.25)]">
+      <div className="flex items-stretch h-[72px]">
+        {/* Painel branco do logo (marca do template) */}
+        <Link
+          href="#home"
+          onClick={() => setMenuOpen(false)}
+          className="flex items-center bg-white px-6 sm:px-10 shrink-0"
+        >
+          <Image
+            src="/logo.png"
+            alt="CGX — Sua infraestrutura, sob controle"
+            width={150}
+            height={50}
+            className="h-10 w-auto object-contain"
+            priority
+          />
+        </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+        {/* Barra navy com navegação */}
+        <div className="flex-1 bg-[#0B1240] flex items-center justify-end px-5 lg:px-12">
+          <nav className="hidden md:flex items-center gap-2 lg:gap-6">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                  pathname === link.href
-                    ? 'text-[#06B6D4] bg-[#06B6D4]/10'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                className={`px-3 py-2 font-display text-sm font-medium transition-colors duration-200 ${
+                  active === link.href ? 'text-[#22D3EE]' : 'text-white hover:text-[#22D3EE]'
                 }`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
+            <a
+              href="#contato"
+              className={`px-3 py-2 font-display text-sm font-semibold transition-colors duration-200 ${
+                active === '#contato' ? 'text-[#22D3EE]' : 'text-white hover:text-[#22D3EE]'
+              }`}
+            >
+              Solicite um diagnóstico
+            </a>
           </nav>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-[#2563EB] hover:bg-[#1d4ed8] text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-glow-blue"
-            >
-              Falar no WhatsApp
-            </a>
-          </div>
-
-          {/* Mobile menu button */}
+          {/* Botão do menu mobile */}
           <button
-            className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
+            className="md:hidden p-2 text-white"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Abrir menu"
           >
@@ -94,7 +89,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Menu mobile */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -102,30 +97,19 @@ export default function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-[#1E293B]/98 backdrop-blur-md border-t border-white/5"
+            className="md:hidden bg-[#0B1240] border-t border-white/10 overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
+              {[...navLinks, { href: '#contato', label: 'Solicite um diagnóstico' }].map((link) => (
+                <a
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                    pathname === link.href
-                      ? 'text-[#06B6D4] bg-[#06B6D4]/10'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
-                  }`}
+                  onClick={() => setMenuOpen(false)}
+                  className="px-4 py-3 font-display text-sm font-medium text-white hover:text-[#22D3EE] transition-colors"
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 px-4 py-3 bg-[#2563EB] hover:bg-[#1d4ed8] text-white text-sm font-semibold rounded-lg text-center transition-colors"
-              >
-                Falar no WhatsApp
-              </a>
             </div>
           </motion.div>
         )}

@@ -43,3 +43,6 @@ next-env.d.ts
 
 # Nginx certs (sensitive)
 /nginx/certs/
+
+# Claude Code local
+.claude/

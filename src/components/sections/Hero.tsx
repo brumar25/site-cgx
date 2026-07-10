@@ -1,9 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, ChevronDown } from 'lucide-react'
-import Link from 'next/link'
-import { WHATSAPP_URL } from '@/lib/config'
+import { ArrowRight, Check } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -14,148 +12,128 @@ const fadeUp = {
   }),
 }
 
+const donuts = [
+  { label: 'Horas manuais eliminadas', value: '−82%', deg: 295, color: '#06B6D4' },
+  { label: 'Processos automatizados', value: '46', deg: 245, color: '#2563EB' },
+  { label: 'Atendimentos com IA', value: '24/7', deg: 330, color: '#22D3EE' },
+]
+
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0F172A]">
-      {/* Background layers */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-30" />
+    <section id="home" className="relative overflow-hidden hero-bokeh">
+      {/* Glifos decorativos do template */}
+      <span className="glyph absolute top-[18%] left-[10%] text-5xl text-[#22D3EE]/70 hidden lg:block animate-float-slow">
+        +
+      </span>
+      <span className="glyph absolute top-[14%] right-[14%] text-4xl text-[#3B82F6]/70 hidden lg:block animate-float">
+        ×
+      </span>
+      <span className="absolute bottom-[30%] right-[9%] w-8 h-8 rounded-full border-4 border-[#22D3EE]/50 hidden lg:block animate-float" />
+      <span className="glyph absolute bottom-[38%] left-[7%] text-6xl text-[#2563EB]/40 hidden lg:block">
+        +
+      </span>
 
-      {/* Radial glow — center */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(37,99,235,0.12) 0%, transparent 70%)',
-        }}
-      />
-
-      {/* Top-left accent */}
-      <div
-        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)',
-        }}
-      />
-
-      {/* Bottom-right accent */}
-      <div
-        className="absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%)',
-        }}
-      />
-
-      {/* Decorative geometric lines */}
-      <div className="absolute top-1/4 left-8 w-px h-24 bg-gradient-to-b from-transparent via-[#06B6D4]/30 to-transparent hidden lg:block" />
-      <div className="absolute top-1/3 right-8 w-px h-32 bg-gradient-to-b from-transparent via-[#2563EB]/30 to-transparent hidden lg:block" />
-      <div className="absolute bottom-1/3 left-16 w-16 h-px bg-gradient-to-r from-transparent via-[#06B6D4]/30 to-transparent hidden lg:block" />
-
-      {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-20 text-center">
-        {/* Badge */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={0}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1E293B] border border-[#06B6D4]/20 text-[#06B6D4] text-xs font-semibold tracking-widest uppercase mb-8"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4] animate-pulse" />
-          Tecnologia aplicada ao crescimento de negócios
-        </motion.div>
-
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 pt-44 pb-16 text-center">
         {/* Headline */}
         <motion.h1
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          custom={0.15}
-          className="font-display font-bold text-4xl sm:text-5xl lg:text-7xl text-white leading-[1.1] tracking-tight mb-6"
+          custom={0.1}
+          className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.15] tracking-tight mb-6"
         >
-          Tecnologia para{' '}
-          <span className="relative inline-block">
-            <span className="gradient-text">organizar,</span>
-          </span>
-          <br />
-          <span className="gradient-text">automatizar</span> e acelerar
-          <br />
-          <span className="text-slate-300">o seu negócio.</span>
+          A forma mais inteligente de
+          <br className="hidden sm:block" /> operar o seu negócio.
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Subtítulo */}
         <motion.p
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          custom={0.3}
-          className="font-body text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          custom={0.25}
+          className="font-body text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          A CGX desenvolve soluções em infraestrutura, automação, integração de sistemas, BI e
-          inteligência artificial para empresas que querem mais{' '}
-          <span className="text-slate-200">controle, produtividade e crescimento.</span>
+          Automações, integrações e IA sob medida para empresas que querem crescer sem aumentar a
+          complexidade operacional.
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTA */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          custom={0.45}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          custom={0.4}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         >
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-8 py-4 bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-glow-blue hover:-translate-y-0.5 text-base"
-          >
-            Falar no WhatsApp
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          <a href="#contato" className="btn-pill">
+            Solicite um diagnóstico
+            <ArrowRight size={18} />
           </a>
-          <Link
-            href="/servicos"
-            className="group flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 font-semibold rounded-xl transition-all duration-300 text-base"
-          >
-            Conhecer serviços
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <a href="#como-funciona" className="btn-pill-outline">
+            Como funciona
+          </a>
         </motion.div>
 
-        {/* Stats row */}
+        {/* Mockup de dashboard (como no template, feito em CSS) */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          custom={0.6}
-          className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto"
+          custom={0.55}
+          className="relative max-w-4xl mx-auto"
         >
-          {[
-            { value: '3 pilares', label: 'Estrutura, Automação e Inteligência' },
-            { value: '6 serviços', label: 'Soluções completas para o seu negócio' },
-            { value: 'Sob medida', label: 'Projetos adaptados à sua realidade' },
-          ].map((stat) => (
-            <div
-              key={stat.value}
-              className="px-6 py-4 rounded-xl bg-[#1E293B]/60 border border-white/5 backdrop-blur-sm text-center"
-            >
-              <p className="font-display font-bold text-[#06B6D4] text-xl mb-1">{stat.value}</p>
-              <p className="text-slate-400 text-xs leading-snug">{stat.label}</p>
+          {/* Card lateral navy com checklist */}
+          <div className="absolute -left-6 sm:-left-10 top-10 z-20 hidden sm:block w-56 rounded-2xl bg-gradient-to-br from-[#141C56] to-[#0B1240] border border-white/10 p-5 shadow-card-lg animate-float">
+            <p className="font-display text-white text-xs font-semibold mb-4 tracking-wide uppercase">
+              Fluxos ativos
+            </p>
+            {['Comprovantes PIX lidos', 'WhatsApp → CRM', 'Relatório diário enviado'].map(
+              (item) => (
+                <div key={item} className="flex items-center gap-2.5 mb-3 last:mb-0">
+                  <span className="w-5 h-5 rounded-full bg-[#22D3EE]/15 border border-[#22D3EE]/40 flex items-center justify-center shrink-0">
+                    <Check size={11} className="text-[#22D3EE]" />
+                  </span>
+                  <span className="text-slate-300 text-xs">{item}</span>
+                </div>
+              )
+            )}
+          </div>
+
+          {/* Card principal branco com donuts */}
+          <div className="relative z-10 rounded-t-3xl bg-white shadow-card-lg px-8 sm:px-14 pt-10 pb-0">
+            <div className="flex items-center justify-between mb-8">
+              <p className="font-display font-semibold text-[#1C2350] text-sm">
+                Painel operacional
+              </p>
+              <span className="flex items-center gap-2 text-xs font-semibold text-[#06B6D4]">
+                <span className="w-2 h-2 rounded-full bg-[#06B6D4] animate-pulse" />
+                ao vivo
+              </span>
             </div>
-          ))}
+            <div className="grid grid-cols-3 gap-4 sm:gap-10 pb-10">
+              {donuts.map((d) => (
+                <div key={d.label} className="flex flex-col items-center">
+                  <div className="relative w-20 h-20 sm:w-28 sm:h-28 mb-3">
+                    <div
+                      className="donut absolute inset-0"
+                      style={{
+                        background: `conic-gradient(${d.color} ${d.deg}deg, #E3EAF8 ${d.deg}deg)`,
+                      }}
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center font-display font-bold text-[#1C2350] text-base sm:text-xl">
+                      {d.value}
+                    </span>
+                  </div>
+                  <p className="text-[#5B6482] text-[11px] sm:text-xs text-center leading-snug">
+                    {d.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.a
-        href="#value-prop"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-slate-300 transition-colors"
-      >
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <ChevronDown size={16} className="animate-bounce" />
-      </motion.a>
     </section>
   )
 }

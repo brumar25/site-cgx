@@ -9,65 +9,44 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#020617',
-          900: '#0F172A',
-          800: '#1E293B',
-          700: '#334155',
+        // Paleta base do redesign (template Analitix adaptado à identidade CGX)
+        ink: {
+          950: '#060A26',
+          900: '#0B1240',
+          800: '#141C56',
+          700: '#232C6B',
         },
         cgx: {
           blue: '#2563EB',
           cyan: '#06B6D4',
           green: '#22C55E',
         },
-        slate: {
-          400: '#94A3B8',
-          500: '#64748B',
-          600: '#475569',
+        cloud: {
+          50: '#F7F9FE',
+          100: '#F0F4FC',
+          200: '#E3EAF8',
         },
       },
       fontFamily: {
-        display: ['var(--font-sora)', 'sans-serif'],
-        body: ['var(--font-dm-sans)', 'sans-serif'],
+        display: ['var(--font-poppins)', 'sans-serif'],
+        body: ['var(--font-mulish)', 'sans-serif'],
       },
       animation: {
-        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-        'border-glow': 'border-glow 2s ease-in-out infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'scan-line': 'scan-line 4s linear infinite',
+        float: 'float 6s ease-in-out infinite',
+        'float-slow': 'float 9s ease-in-out infinite',
+        'spin-slow': 'spin 14s linear infinite',
       },
       keyframes: {
-        'glow-pulse': {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.8' },
-        },
-        'border-glow': {
-          '0%, 100%': { 'border-color': 'rgba(6, 182, 212, 0.3)' },
-          '50%': { 'border-color': 'rgba(6, 182, 212, 0.8)' },
-        },
-        'float': {
+        float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-12px)' },
         },
-        'scan-line': {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100vh)' },
-        },
-      },
-      backgroundImage: {
-        'dot-grid': 'radial-gradient(circle, #334155 1px, transparent 1px)',
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-      backgroundSize: {
-        'dot-sm': '20px 20px',
-        'dot-md': '32px 32px',
       },
       boxShadow: {
-        'glow-blue': '0 0 20px rgba(37, 99, 235, 0.3), 0 0 60px rgba(37, 99, 235, 0.1)',
-        'glow-cyan': '0 0 20px rgba(6, 182, 212, 0.3), 0 0 60px rgba(6, 182, 212, 0.1)',
-        'card': '0 4px 24px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 8px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(6, 182, 212, 0.15)',
+        'glow-cyan': '0 0 20px rgba(6, 182, 212, 0.35), 0 0 60px rgba(6, 182, 212, 0.12)',
+        'glow-blue': '0 0 20px rgba(37, 99, 235, 0.35), 0 0 60px rgba(37, 99, 235, 0.12)',
+        card: '0 10px 40px rgba(11, 18, 64, 0.10)',
+        'card-lg': '0 24px 80px rgba(11, 18, 64, 0.18)',
       },
     },
   },
